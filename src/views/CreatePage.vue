@@ -68,7 +68,7 @@
 <script>
     export default {
         emits: {
-            pageCreated({pageTItle, content, link, published}) {
+            pageCreated({pageTitle, content, link, published}) {
                 if (!pageTitle) {
                     return false;
                 }

@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My App</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li v-for="(page, index) in publishedPages" class="nav-item" :key="index">
-                    <navbar-link
-                        :page="page"
-                        :isActive="activePage == index"
-                        @click.prevent="navLinkClick(index)"
-                    ></navbar-link>
-                </li>
+                <navbar-link
+                    v-for="(page, index) in publishedPages" class="nav-item" :key="index"
+                    :page="page"
+                    :index="index"
+                    :isActive="activePage == index"
+                    @actived="$emit('actived')"
+                ></navbar-link>
             </ul>
             <form class="d-flex">
                 <button
@@ -37,7 +37,7 @@ export default {
             return this.pages.filter(p => p.published);
         }
     },
-    props: ['pages', 'activePage', 'navLinkClick'],
+    props: ['pages', 'activePage'],
     data() {
         return {
             theme: 'dark',
